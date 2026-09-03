@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ua">
 <head>
 <meta charset="utf-8">
-<title>Проверка распознавания листов</title>
+<title>Провірка розпізнавання листів</title>
 <style>
   body { margin: 0; padding: 24px; background: #0b1a26; color: #eaf6ff;
          font: 14px/1.5 "Segoe UI", system-ui, sans-serif; }
@@ -19,8 +19,8 @@
 </style>
 </head>
 <body>
-<h1>Проверка распознавания листов</h1>
-<p class="sub" id="status">Загрузка…</p>
+<h1>Провірка розпізнавання листів</h1>
+<p class="sub" id="status">Завантаженя...</p>
 <div id="grid"></div>
 
 <script src="../assets/capture.js"></script>
@@ -32,10 +32,10 @@
   // распознавание в лоб ничего не доказывает — важно, что метки читаются
   // с перекосом, поворотом и провалом освещения, как на реальном фото.
   var CASES = [
-    { name: 'ровно',            warp: 0.00, rot: 0,     dim: 1.00, noise: 3  },
-    { name: 'перекос',          warp: 0.06, rot: 0.05,  dim: 0.92, noise: 6  },
-    { name: 'сильный перекос',  warp: 0.13, rot: -0.11, dim: 0.78, noise: 9  },
-    { name: 'вверх ногами',     warp: 0.05, rot: 3.10,  dim: 0.88, noise: 6  }
+    { name: 'рівно',            warp: 0.00, rot: 0,     dim: 1.00, noise: 3  },
+    { name: 'перекіс',          warp: 0.06, rot: 0.05,  dim: 0.92, noise: 6  },
+    { name: 'сильний перекіс',  warp: 0.13, rot: -0.11, dim: 0.78, noise: 9  },
+    { name: 'догори ногами',     warp: 0.05, rot: 3.10,  dim: 0.88, noise: 6  }
   ];
 
   var SHEET_W = 1400, SHEET_H = 990;    // «отпечатанный» лист
