@@ -46,8 +46,6 @@
   }
   header { flex: 1 1 340px; }
 
-  /* Инструкция-разворот: свёрнутая — тихая строка, раскрытая — четыре шага
-     и витрина. Новичку открыта сама, остальным не мешает. */
   .how {
     margin: 0 0 32px;
     border: 1px solid var(--line); border-radius: 14px;
@@ -93,13 +91,9 @@
     color: var(--ink); text-decoration: none;
     transition: transform .2s cubic-bezier(.2,.7,.2,1), border-color .2s, box-shadow .2s;
   }
-  /* display: flex сильнее браузерного [hidden]: без этого правила скрытая
-     карточка витрины (демо не настроено) всё равно торчала бы пустой рамкой. */
   .tank[hidden] { display: none; }
   .tank:hover { transform: translateY(-3px); border-color: rgba(88,214,255,.45); box-shadow: 0 20px 54px rgba(0,20,40,.5); }
 
-  /* Окошко в аквариум. Снимок делает сама сцена, когда там что-то меняется;
-     пока его нет — показываем фон аквариума, он известен всегда. */
   .tank .shot {
     position: relative; aspect-ratio: 16 / 9; background: #0a1c2b;
     display: block; overflow: hidden;
@@ -109,14 +103,13 @@
     position: absolute; inset: 0; pointer-events: none;
     background: linear-gradient(180deg, transparent 45%, rgba(6,18,30,.85) 100%);
   }
-  /* Заглушка, пока ни снимка, ни фона: аквариум пустой и ещё не открывался */
   .tank .shot .none {
     position: absolute; inset: 0; display: grid; place-content: center; gap: 6px;
     color: var(--dim); font-size: 13px; text-align: center;
   }
   .tank .shot .none .big { font-size: 30px; line-height: 1; }
-  .tank .shot .fade { opacity: 0; transition: opacity .35s }
-  .tank .shot .fade.on { opacity: 1 }
+  .tank .shot .fade { opacity: 0; transition: opacity .35s; }
+  .tank .shot .fade.on { opacity: 1; }
 
   .tank .body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 3px; }
   .tank h2 { margin: 0; font-size: 18px; font-weight: 620; letter-spacing: -.2px; }
@@ -126,11 +119,6 @@
     font-size: 12px; letter-spacing: .5px;
   }
 
-  /* Удаление — крестик в углу картинки, как у плиток фона в админке:
-     в ряду кнопок он занимал место и притягивал взгляд сильнее «Открыть».
-     Виден всегда, только приглушённо: на телефоне наведения нет, и всплывающий
-     по нему крестик стоил бы лишнего тапа — первый показывал бы кнопку,
-     и только второй открывал аквариум. */
   .tank .kill {
     position: absolute; top: 10px; right: 10px; z-index: 1;
     width: 28px; height: 28px; border-radius: 50%; padding: 0;
@@ -139,10 +127,9 @@
     display: grid; place-content: center; opacity: .5;
     backdrop-filter: blur(4px); transition: opacity .15s, background .15s, color .15s;
   }
-  .tank:hover .kill, .tank .kill:focus-visible { opacity: 1 }
-  .tank .kill:hover { background: #4a1d24; color: #ff9aa6; border-color: #7a2b36 }
+  .tank:hover .kill, .tank .kill:focus-visible { opacity: 1; }
+  .tank .kill:hover { background: #4a1d24; color: #ff9aa6; border-color: #7a2b36; }
 
-  /* Кнопка-«таблетка» — «Открыть» у поля ввода кода. */
   .btn {
     appearance: none; cursor: pointer; font: inherit; font-size: 13.5px;
     text-align: center; text-decoration: none; display: inline-block;
@@ -169,9 +156,6 @@
     background: var(--card); border: 1px solid var(--line); border-radius: 16px;
     padding: 16px 18px;
   }
-  /* На узком экране карточка съезжает под заголовок и стоит одна на строке:
-     330 px посреди пустой ширины выглядят обрезком, поэтому там она
-     растягивается во всю полосу — как карточки аквариумов под ней. */
   @media (max-width: 760px) {
     .bycode { flex-basis: 100%; }
   }
@@ -213,12 +197,10 @@
 
   <div class="head">
     <header>
-      <h1 data-t="home.title">Мои аквариумы</h1>
+      <h1 data-t="home.title">Мої акваріуми</h1>
       <p data-t="home.lead"></p>
     </header>
 
-    <!-- Ввод кода стоит рядом с заголовком: с пином это первое действие
-         телевизора, и внизу страницы его искали дольше всего. -->
     <div class="bycode">
       <div class="langrow"><span id="lang"></span></div>
       <h3 data-t="home.bycode.title"></h3>
@@ -230,14 +212,9 @@
     </div>
   </div>
 
-  <!-- Инструкция читается один раз, а места просит много, поэтому живёт
-       в развороте: новичку без аквариумов открыта сама, дальше — строка,
-       которую всегда можно раскрыть заново. -->
   <details class="how" id="how">
     <summary><span class="chev">▸</span><span data-t="home.how.title"></span></summary>
     <div class="howbody">
-      <!-- Большой экран — вторым шагом: сначала настроить сцену, а потом
-           творить, и рыбка появится на телевизоре прямо на глазах. -->
       <ol class="hsteps">
         <li><span class="ico">🌊</span><span data-t="home.how.s0"></span></li>
         <li><span class="ico">📺</span><span data-t="home.how.s4"></span></li>
@@ -245,8 +222,6 @@
         <li><span class="ico">🖍️</span><span data-t="home.how.s2"></span></li>
         <li><span class="ico">📷</span><span data-t="home.how.s3"></span></li>
       </ol>
-      <!-- Витрина — карточка с живым кадром, а не таблетка: это главный путь
-           новичка к «вау», и бледной кнопкой он терялся даже рядом с пустым «+». -->
       <a class="tank demo" id="demo" hidden>
         <div class="shot"><div class="veil"></div></div>
         <div class="body">
@@ -279,12 +254,12 @@
 
   I18N.mount(document.getElementById('lang'));
   document.title = I18N.t('home.title');
-  // Смена языка перерисовывает карточки: в них счётчик рыбок и подписи.
-  addEventListener('aqua:lang', function () { document.title = I18N.t('home.title'); render(); });
+  
+  addEventListener('aqua:lang', function () { 
+    document.title = I18N.t('home.title'); 
+    render(); 
+  });
 
-  // Карточка целиком — ссылка в аквариум. Отдельных кнопок нет: «Открыть»
-  // дублировало нажатие на саму карточку, а управление живёт в меню
-  // аквариума, рядом с тем, чем управляют.
   function card(meta) {
     var el = document.createElement('a');
     el.className = 'tank';
@@ -308,14 +283,10 @@
     m.appendChild(code);
 
     var shot = el.querySelector('.shot');
-
-    // Снимок сцены, а если его ещё не делали — хотя бы фон аквариума.
-    // Появляется плавно: подстановка готовой картинки рывком выглядит дёшево.
     var pic = meta.preview || meta.backgroundUrl;
     if (pic) {
-      // Заглушку убираем совсем: она лежит поверх картинки и иначе
-      // просвечивала бы сквозь неё.
-      shot.querySelector('.none').remove();
+      var noneEl = shot.querySelector('.none');
+      if (noneEl) noneEl.remove();
       var img = document.createElement('img');
       img.className = 'fade';
       img.alt = '';
@@ -326,12 +297,8 @@
     }
 
     el.querySelector('button.kill').onclick = function (e) {
-      e.preventDefault();      // крестик лежит внутри ссылки на аквариум
+      e.preventDefault();
       e.stopPropagation();
-      // Два разных действия за одним крестиком. Аквариум, открытый по коду,
-      // чужой: убрать его из своего списка человек вправе всегда, а удалить
-      // насовсем — только с паролем. Раньше было одно «Удалить», и чужой
-      // аквариум оставался в списке навсегда.
       Modal.choose({
         title: I18N.t('home.remove.title', { name: meta.name }),
         text: I18N.t('home.remove.text', {
@@ -349,8 +316,6 @@
         if (!what) return;
         if (what === 'forget') { Tank.forget(meta.id); render(); return; }
 
-        // Удаление — под паролем. Если его тут не знают (открыли по коду
-        // на чужом устройстве), спрашиваем и пробуем ещё раз.
         var kill = function () {
           return Tank.send('/api/t/' + meta.id, { method: 'DELETE', tank: meta.id });
         };
@@ -396,9 +361,6 @@
           .then(function (r) { return r.json(); })
           .then(function (meta) {
             Tank.remember(meta.id);
-            // Пароль сервер показывает один раз. На этом устройстве он
-            // остаётся в браузере, так что переспрашивать его тут не будут —
-            // а вот на телефоне или у второго родителя без него не обойтись.
             Tank.setPass(meta.id, meta.password);
             return Modal.alert({
               title: I18N.t('home.created.title'),
@@ -422,22 +384,14 @@
     return b;
   }
 
-  // Демо-аквариум: сервер отдаёт код, если хозяин настроил AQUA_DEMO_TANK.
-  // Это самый короткий путь к «вау»: живой аквариум до того, как человек
-  // хоть что-то завёл. Ссылка с ?demo — чтобы витрина не прописалась
-  // в списке своих.
   var demoAsked = false;
   var howTouched = false;
   var HOW_KEY = 'aqua.howOpen';
 
-  // Свернул или развернул руками — запоминаем, чтобы инструкция не
-  // раскрывалась заново на каждой загрузке. Слушаем клик, а не toggle:
-  // toggle приходит и от программного открытия, и запомнил бы его тоже.
-  // Клик срабатывает до переключения, поэтому состояние читаем тактом позже.
   document.querySelector('#how summary').addEventListener('click', function () {
     var how = document.getElementById('how');
     setTimeout(function () {
-      try { localStorage.setItem(HOW_KEY, how.open ? '1' : '0'); } catch (e) { /* приватный режим */ }
+      try { localStorage.setItem(HOW_KEY, how.open ? '1' : '0'); } catch (e) {}
     }, 0);
   });
 
@@ -450,8 +404,6 @@
         if (!d || !Tank.isValidId(d.id)) return;
         var a = document.getElementById('demo');
         a.href = '/t/' + d.id + '?demo';
-        // Кадр витрины — как у карточек аквариумов: снимок сцены,
-        // а пока его нет — хотя бы фон.
         return fetch('/api/t/' + d.id + '/meta')
           .then(function (r) { return r.ok ? r.json() : null; })
           .catch(function () { return null; })
@@ -470,7 +422,7 @@
             a.hidden = false;
           });
       })
-      .catch(function () { /* демо не настроено — блок живёт без карточки */ });
+      .catch(function () {});
   }
 
   function render() {
@@ -478,28 +430,21 @@
     box.textContent = '';
     empty.hidden = ids.length > 0;
 
-    // Инструкция раскрыта только новичку — у кого есть свой аквариум, тот
-    // дорогу знает. Ручной выбор сильнее умолчания и переживает перезагрузку.
-    // Ставим один раз: перерисовка (смена языка, удаление) не должна
-    // захлопывать разворот, открытый руками.
     if (!howTouched) {
       howTouched = true;
       var saved = null;
-      try { saved = localStorage.getItem(HOW_KEY); } catch (e) { /* приватный режим */ }
+      try { saved = localStorage.getItem(HOW_KEY); } catch (e) {}
       document.getElementById('how').open = saved !== null ? saved === '1' : ids.length === 0;
     }
     askDemo();
 
-    // Каждый аквариум спрашиваем отдельно: их немного, а батч-ручка ради
-    // десятка запросов не окупается.
     Promise.all(ids.map(function (id) {
       return fetch('/api/t/' + id + '/meta')
         .then(function (r) { return r.ok ? r.json() : null; })
         .catch(function () { return null; });
     })).then(function (metas) {
+      box.textContent = '';
       metas.forEach(function (meta, i) {
-        // Аквариума нет на сервере — тихо убираем из списка, чтобы призраки
-        // не копились после удалений с другого устройства.
         if (!meta) { Tank.forget(ids[i]); return; }
         box.appendChild(card(meta));
       });
@@ -512,14 +457,9 @@
     e.preventDefault();
     var v = document.getElementById('code').value.trim().toLowerCase().replace(/\s+/g, '');
 
-    // Пять цифр — временный код с телефона («Код для телевизора»),
-    // десять знаков — постоянный код аквариума. Форматы не пересекаются,
-    // поэтому поле одно на оба.
     if (/^\d{5}$/.test(v)) {
       fetch('/api/pin/' + v)
         .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
-        // ?tv: по пину открывают экран-витрину (телевизор), меню там само
-        // не выскакивает — этим экраном любуются, а управляют с телефона.
         .then(function (d) { location.href = '/t/' + d.id + '?tv'; })
         .catch(function (status) {
           var many = status === 429;
